@@ -19,7 +19,7 @@ function addBookToLibrary(book){
 
 function generateTemplate(title, author, pages, read, id){
     return `
-    <tr id = "book-${id}" data-index = "${id}">
+    <tr id = "book-${id}">
         <td>${title}</td>
         <td>${author}</td>
         <td>${pages}</td>
