@@ -1,0 +1,37 @@
+td:not(:last-child) {
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  th{
+      padding: 0px 50px 0px 50px;
+  }
+
+  button:disabled{
+    border: none;
+    padding: 5px 8px;
+    border-radius: 0px;
+    background-color: rgb(216, 216, 216);
+    color: white;
+    font-size: 13px;
+    transition-duration: 0.2s;
+  }
+
+  button:enabled, input[type=submit]{
+      border: none;
+      padding: 7px 10px;
+      border-radius: 5px;
+      background-color: rgb(246, 241, 252);
+      color: black;
+      font-size: 13px;
+      transition-duration: 0.2s;
+  }
+
+  button:hover:enabled, input[type=submit]:hover{
+    background-color: rgb(41, 31, 48);
+    color: white;
+    transform: scale(1.05,1.05);
+    cursor: pointer;
+    
+}
+
