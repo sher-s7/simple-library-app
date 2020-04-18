@@ -63,12 +63,19 @@ button:focus, .checkbox:focus{
     background-color: rgb(41, 31, 48);
     border-radius: 15px;
 }
-
+.checkbox::after{
+    content: '✘';
+    font-size: 30px;
+    color: rgb(41, 31, 48);
+    position: relative;
+    top: 6px;
+    right: -150px;
+}
 .checkbox:checked::after{
     content: '✔';
     font-size: 30px;
     color: white;
     position: relative;
     top: 6px;
-    right: -145px;
+    right: -150px;
 }
