@@ -1,6 +1,6 @@
 td:nth-child(-n+3) {
-    border: 1px solid black;
     text-align: center;
+    vertical-align: middle;
 }
 
 th {

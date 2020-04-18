@@ -7,11 +7,11 @@ let book_form = document.getElementById("book-form");
 let delete_book_buttons = document.querySelectorAll('.delete-book');
 let read_buttons = document.getElementsByClassName('read-button');
 
-for(book of myLibrary){
+for (book of myLibrary) {
     table_body.innerHTML += generateTemplate(book.title, book.author, book.pages, book.read, book.id)
 }
 
-function Book(title, author, pages, read, id){
+function Book(title, author, pages, read, id) {
     this.title = title
     this.author = author
     this.pages = pages
@@ -19,13 +19,12 @@ function Book(title, author, pages, read, id){
     this.id = id
 }
 
-function addBookToLibrary(book){
+function addBookToLibrary(book) {
     myLibrary.push(book);
-
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
-function generateTemplate(title, author, pages, read, id){
+function generateTemplate(title, author, pages, read, id) {
     return `
     <tr data-book="${id}" id = "book-${id}">
         <td>${title}</td>
@@ -38,16 +37,16 @@ function generateTemplate(title, author, pages, read, id){
     `
 }
 
-function render(){
-    book = myLibrary[myLibrary.length-1];
+function render() {
+    book = myLibrary[myLibrary.length - 1];
     table_body.innerHTML += generateTemplate(book.title, book.author, book.pages, book.read, book.id)
 }
 
-function toggleHidden(element){
+function toggleHidden(element) {
     element.style.display == 'none' ? element.style.display = 'block' : element.style.display = 'none'
 }
 
-function toggleDisabled(button){
+function toggleDisabled(button) {
     button.disabled = !button.disabled
 }
 
@@ -57,7 +56,7 @@ new_book_button.addEventListener('click', () => {
     toggleHidden(book_form);
 });
 
-book_form.addEventListener('submit', (e) =>{
+book_form.addEventListener('submit', (e) => {
     e.preventDefault()
     addBookToLibrary(new Book(e.target.title.value, e.target.author.value, e.target.pages.value, e.target.read.checked, myLibrary.length))
     render()
@@ -68,15 +67,17 @@ book_form.addEventListener('submit', (e) =>{
 
 });
 
-document.addEventListener('click', function(e){
-    if(e.target.classList.contains('delete-book')){
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('delete-book')) {
         document.getElementById(`book-${e.target.id}`).remove();
-        myLibrary.splice(e.target.id, 1);
+        myLibrary.splice(myLibrary.indexOf(myLibrary.find(book => book.id == e.target.id)), 1);
     }
 
-    if(e.target.classList.contains('checkbox')){
+    if (e.target.classList.contains('checkbox')) {
         // e.target.checked = !e.target.checked
-        myLibrary[e.target.parentNode.parentNode.dataset.book].read = !myLibrary[e.target.parentNode.parentNode.dataset.book].read
+        console.log(e.target.parentNode.parentNode.dataset.book)
+        myLibrary[myLibrary.indexOf(myLibrary.find(book => book.id == e.target.parentNode.parentNode.dataset.book))].read = !myLibrary[myLibrary.indexOf(myLibrary.find(book => book.id == e.target.parentNode.parentNode.dataset.book))].read
+        // myLibrary[e.target.parentNode.parentNode.dataset.book].read = !myLibrary[e.target.parentNode.parentNode.dataset.book].read
     }
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 })
