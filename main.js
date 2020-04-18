@@ -1,10 +1,15 @@
-let myLibrary = [];
+let myLibrary = JSON.parse(localStorage.getItem("myLibrary") || "[]");
+
 let table_body = document.getElementById("table-body");
 let new_book_button = document.getElementById("form-reveal");
 let form_submit = document.getElementById("submit-button");
 let book_form = document.getElementById("book-form");
 let delete_book_buttons = document.querySelectorAll('.delete-book');
 let read_buttons = document.getElementsByClassName('read-button');
+
+for(book of myLibrary){
+    table_body.innerHTML += generateTemplate(book.title, book.author, book.pages, book.read, book.id)
+}
 
 function Book(title, author, pages, read, id){
     this.title = title
@@ -15,13 +20,14 @@ function Book(title, author, pages, read, id){
 }
 
 function addBookToLibrary(book){
-    myLibrary.push(book)
+    myLibrary.push(book);
+
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
 function generateTemplate(title, author, pages, read, id){
-    console.log(read)
     return `
-    <tr id = "book-${id}">
+    <tr data-book="${id}" id = "book-${id}">
         <td>${title}</td>
         <td>${author}</td>
         <td>${pages}</td>
@@ -65,9 +71,12 @@ book_form.addEventListener('submit', (e) =>{
 document.addEventListener('click', function(e){
     if(e.target.classList.contains('delete-book')){
         document.getElementById(`book-${e.target.id}`).remove();
+        myLibrary.splice(e.target.id, 1);
     }
 
-    if(e.target.classList.contains('read-button')){
-        console.log(e.target.innerHTML);
+    if(e.target.classList.contains('checkbox')){
+        // e.target.checked = !e.target.checked
+        myLibrary[e.target.parentNode.parentNode.dataset.book].read = !myLibrary[e.target.parentNode.parentNode.dataset.book].read
     }
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 })
