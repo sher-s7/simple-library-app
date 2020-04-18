@@ -10,16 +10,26 @@
 
 <body>
 
-    <table>
+    <table style="width: 80%">
         <thead>
             <tr>
-                <th colspan="4"><h1>Library</h1></th>
+                <th colspan="4">
+                    <h1>Library</h1>
+                </th>
             </tr>
             <tr>
-                <th colspan="1"><h2>Title</h2></th>
-                <th colspan="1"><h2>Author</h2></th>
-                <th colspan="1"><h2>Pages</h2></th>
-                <th colspan="1"><h2>Read?</h2></th>
+                <th colspan="1">
+                    <h2>Title</h2>
+                </th>
+                <th colspan="1">
+                    <h2>Author</h2>
+                </th>
+                <th colspan="1">
+                    <h2>Pages</h2>
+                </th>
+                <th colspan="1">
+                    <h2>Read?</h2>
+                </th>
                 <th colspan="1" id="delete"></th>
             </tr>
         </thead>
@@ -34,13 +44,14 @@
 
         <label for="author">Author: </label>
         <input type="text" name="author" id="author">
-        
+
         <label for="pages">Pages: </label>
         <input type="number" name="pages" id="pages">
-        
+
         <label for="read">I've read this book</label>
+        <span class="read-button"></span>
         <input type="checkbox" name="read" id="read">
-        
+
         <input type="submit" name="submit" id="submit-button" disabled>
     </form>
 

@@ -4,6 +4,7 @@ let new_book_button = document.getElementById("form-reveal");
 let form_submit = document.getElementById("submit-button");
 let book_form = document.getElementById("book-form");
 let delete_book_buttons = document.querySelectorAll('.delete-book');
+let read_buttons = document.getElementsByClassName('read-button');
 
 function Book(title, author, pages, read, id){
     this.title = title
@@ -18,12 +19,14 @@ function addBookToLibrary(book){
 }
 
 function generateTemplate(title, author, pages, read, id){
+    console.log(read)
     return `
     <tr id = "book-${id}">
         <td>${title}</td>
         <td>${author}</td>
         <td>${pages}</td>
-        <td>${read}</td>
+        <td style="height: 51px;"><input class='checkbox' style="width:100%; height: 100%;" name="checkbox" type="checkbox" ${read == true ? 'checked' : ''}/>
+        </td>
         <td><button class='delete delete-book' id=${id}>Delete</button></td>
     </tr>
     `
@@ -63,5 +66,8 @@ document.addEventListener('click', function(e){
     if(e.target.classList.contains('delete-book')){
         document.getElementById(`book-${e.target.id}`).remove();
     }
-})
 
+    if(e.target.classList.contains('read-button')){
+        console.log(e.target.innerHTML);
+    }
+})

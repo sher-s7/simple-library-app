@@ -1,13 +1,13 @@
-td:not(:last-child) {
+td:nth-child(-n+3) {
     border: 1px solid black;
     text-align: center;
-  }
+}
 
-  th{
-      padding: 0px 50px 0px 50px;
-  }
+th {
+    padding: 0px 50px 0px 50px;
+}
 
-  button:disabled{
+button:disabled {
     border: none;
     padding: 5px 8px;
     border-radius: 0px;
@@ -15,23 +15,60 @@ td:not(:last-child) {
     color: white;
     font-size: 13px;
     transition-duration: 0.2s;
-  }
-
-  button:enabled, input[type=submit]{
-      border: none;
-      padding: 7px 10px;
-      border-radius: 5px;
-      background-color: rgb(246, 241, 252);
-      color: black;
-      font-size: 13px;
-      transition-duration: 0.2s;
-  }
-
-  button:hover:enabled, input[type=submit]:hover{
-    background-color: rgb(41, 31, 48);
-    color: white;
-    transform: scale(1.05,1.05);
-    cursor: pointer;
-    
 }
 
+button:enabled,
+input[type="submit"] {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    background-color: rgb(246, 241, 252);
+    color: black;
+    font-size: 13px;
+    transition-duration: 0.2s;
+}
+
+button:hover:enabled,
+input[type="submit"]:hover {
+    background-color: rgb(41, 31, 48);
+    color: white;
+    transform: scale(1.05, 1.05);
+    cursor: pointer;
+}
+
+table {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    vertical-align: middle;
+    margin: 2px;
+    appearance: none;
+    background-color: rgb(246, 241, 252);
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+button:focus, .checkbox:focus{
+    outline: none;
+    border-right: 2px solid rgb(187, 178, 197);
+    border-bottom: 2px solid rgb(187, 178, 197);
+}
+
+.checkbox:checked{
+    background-color: rgb(41, 31, 48);
+    border-radius: 15px;
+}
+
+.checkbox:checked::after{
+    content: '✔';
+    font-size: 30px;
+    color: white;
+    position: relative;
+    top: 6px;
+    right: -145px;
+}
