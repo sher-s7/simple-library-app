@@ -30,7 +30,7 @@ function generateTemplate(title, author, pages, read, id) {
         <td>${title}</td>
         <td>${author}</td>
         <td>${pages}</td>
-        <td style="height: 51px;"><input class='checkbox' style="width:100%; height: 100%;" name="checkbox" type="checkbox" ${read == true ? 'checked' : ''}/>
+        <td ><input class='checkbox' style="width:50%; height: 100%;" name="checkbox" type="checkbox" ${read == true ? 'checked' : ''}/>
         </td>
         <td><button class='delete delete-book' id=${id}>Delete</button></td>
     </tr>
@@ -74,10 +74,8 @@ document.addEventListener('click', function (e) {
     }
 
     if (e.target.classList.contains('checkbox')) {
-        // e.target.checked = !e.target.checked
         console.log(e.target.parentNode.parentNode.dataset.book)
         myLibrary[myLibrary.indexOf(myLibrary.find(book => book.id == e.target.parentNode.parentNode.dataset.book))].read = !myLibrary[myLibrary.indexOf(myLibrary.find(book => book.id == e.target.parentNode.parentNode.dataset.book))].read
-        // myLibrary[e.target.parentNode.parentNode.dataset.book].read = !myLibrary[e.target.parentNode.parentNode.dataset.book].read
     }
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-})
+});
